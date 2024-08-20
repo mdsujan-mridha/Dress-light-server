@@ -8,7 +8,7 @@ const database = (module.exports = () => {
     }
     try {
         mongoose.set('strictQuery', true);
-        mongoose.connect(`mongodb+srv://nextbdsite3:X7OEAiyHkXgVosah@cluster0.0w9io.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`);
+        mongoose.connect(`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0.0w9io.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`);
         console.log("Database Connected ✅✅")
 
     } catch (error) {

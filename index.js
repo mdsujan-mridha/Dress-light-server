@@ -3,6 +3,8 @@ const app = require("./app");
 const database = require("./config/dbConnect");
 const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
+const cloudinary = require('cloudinary');
+
 // handle uncaught Exception 
 process.on("uncaughtException", err => {
 
@@ -17,6 +19,13 @@ process.on("uncaughtException", err => {
 dotenv.config({path:"./config/config.env"});
 // database connection 
 database();
+
+// cloudinary config 
+cloudinary.v2.config({
+    cloud_name:process.env,
+    api_key:process.env.CLOUD_API_KEY,
+    api_secret:process.env.CLOUD_API_SECRET
+})
 
 app.get("/", async (req, res) => {
     res.send("Hello Admin server is working ")
