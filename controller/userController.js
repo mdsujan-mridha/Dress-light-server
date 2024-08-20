@@ -6,11 +6,14 @@ const sendToken = require("../utils/jwtToken");
 const cloudinary = require("cloudinary");
 
 exports.createUser = catchAsyncErrors(async (req, res, next) => {
-    const mycloud = await cloudinary.v2.uploader(req.body.avatar, {
+    console.log(req.body.file);
+    const mycloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatar",
         width: 150,
         crop: "scale"
-    })
+    });
+    
+    // console.log(mycloud);
     const { name, email, password } = req.body;
     const user = await User.create({
         name,
@@ -18,9 +21,9 @@ exports.createUser = catchAsyncErrors(async (req, res, next) => {
         password,
         avatar: {
             public_id: mycloud.public_id,
-            url: mycloud.secure_url
+            url: mycloud.secure_url,
         }
-    })
+    });
     sendToken(user, 201, res);
 });
 
