@@ -2,27 +2,31 @@
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../model/userModel");
 const ErrorHandler = require("../utils/ErrorHandler");
+const { uploadFilesToCloudinary } = require("../utils/features");
 const sendToken = require("../utils/jwtToken");
 const cloudinary = require("cloudinary");
 
 exports.createUser = catchAsyncErrors(async (req, res, next) => {
-    console.log(req.body.file);
-    const mycloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: "avatar",
-        width: 150,
-        crop: "scale"
-    });
-    
-    // console.log(mycloud);
+    // console.log(req.body.file);
     const { name, email, password } = req.body;
+    const file = req.file;
+    if (!file) return next(new ErrorHandler("Please Upload Avatar"));
+    const result = await uploadFilesToCloudinary([file]);
+    // const result = await cloudinary.v2.uploader.upload(file);
+    // console.log(result);
+
+    const avatar = {
+        public_id: result[0].public_id,
+        url: result[0].url,
+    }
+
+    // console.log(mycloud);
+    
     const user = await User.create({
         name,
         email,
         password,
-        avatar: {
-            public_id: mycloud.public_id,
-            url: mycloud.secure_url,
-        }
+        avatar,
     });
     sendToken(user, 201, res);
 });

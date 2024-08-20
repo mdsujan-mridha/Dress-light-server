@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 
 
 const options = {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
     credentials: true,
     optionSuccessStatus: 200,
 
