@@ -8,3 +8,12 @@
 - CLOUD_NAME = 
 - CLOUD_API_KEY = 
 - CLOUD_API_SECRET = 
+- SMTP_SERVICE=
+
+- SMTP_MAIL=
+
+- appPassword=
+
+- SMTP_HOST=smtp.gmail.com
+
+- SMTP_PORT=465 
