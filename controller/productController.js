@@ -38,4 +38,31 @@ exports.createNewProduct = catchAsyncErrors(async (req, res, next) => {
         product,
         message: "Product Created Successfully",
     });
-})
+});
+
+// get products 
+exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
+
+    const products = await Product.find();
+    res.status(200).json({
+        success: true,
+        products,
+        message: "All Products Fetched Successfully",
+    });
+});
+
+// get product details 
+exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+        return next(new ErrorHandler("Product Not Found", 404));
+    }
+    res.status(200).json({
+        success: true,
+        product,
+        message: "Product Fetched Successfully",
+    });
+});
+
+
+

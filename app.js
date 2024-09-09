@@ -22,7 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-
 dotenv.config({ path: "./config/config.env" });
 
 // import all router 
