@@ -1,3 +1,27 @@
+# Clone Repo and Install Dependency
+1. Clone repo.
+ ```bash
+ git clone https://github.com/mdsujan-mridha/Dress-light-server.git
+ ```
+2. Move on directory
+ ```bash
+ cd Dress-light-server
+ ```
+4. Install dependency
+ ```bash
+ npm install
+ ```
+5. Run server
+ ```bash
+ nodemon index.js
+ ```
+6. make sure you have install nodemon if you have not install nodemon yet
+ ```bash
+ npm install -g nodemon
+ ```
+
+
+
 # ENV Variable
 - PORT = 5000
 - JWT_SECRET=

@@ -28,7 +28,10 @@ dotenv.config({ path: "./config/config.env" });
 // import all router 
 // user router 
 const user = require("./router/userRouter");
+// product router 
+const product = require("./router/productRouter");
 app.use("/api/v1", user);
+app.use("/api/v1", product);
 
 
 // custom middleware
