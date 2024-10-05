@@ -29,8 +29,11 @@ dotenv.config({ path: "./config/config.env" });
 const user = require("./router/userRouter");
 // product router 
 const product = require("./router/productRouter");
+// order router
+const order = require("./router/orderRouter");
 app.use("/api/v1", user);
 app.use("/api/v1", product);
+app.use("/api/v1", order)
 
 
 // custom middleware
