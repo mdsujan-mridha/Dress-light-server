@@ -31,9 +31,12 @@ const user = require("./router/userRouter");
 const product = require("./router/productRouter");
 // order router
 const order = require("./router/orderRouter");
+// payment router
+const payment = require("./router/paymentRouer");
 app.use("/api/v1", user);
 app.use("/api/v1", product);
-app.use("/api/v1", order)
+app.use("/api/v1", order);
+app.use("/api/v1", payment);
 
 
 // custom middleware
