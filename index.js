@@ -3,7 +3,7 @@ const app = require("./app");
 const database = require("./config/dbConnect");
 const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
-const { v2: cloudinary } = require("cloudinary");
+const cloudinary = require("cloudinary");
 
 // handle uncaught Exception 
 process.on("uncaughtException", err => {
