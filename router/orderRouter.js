@@ -19,8 +19,4 @@ router.route("/admin/order/:id")
     .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteOrder)
     .put(isAuthenticatedUser, authorizeRoles("admin"), updateOrder);
 
-
-
-
-
 module.exports = router;

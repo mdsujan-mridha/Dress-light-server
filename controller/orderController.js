@@ -81,7 +81,9 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
 
 // update order 
 exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
+    // console.log(req.body.status);
     const order = await Order.findById(req.params.id);
+    // console.log(order);
     if (!order) {
         return next(new ErrorHandler("Order not found with this id", 404));
     }
